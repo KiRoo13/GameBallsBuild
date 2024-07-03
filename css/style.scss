@@ -1,0 +1,211 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+$conteiner: 1200px;
+$fs: 18px;
+$brs: 10px;
+$brc: rgb(255, 255, 255);
+
+@mixin position ($x) {
+   display: flex;
+   justify-content: $x;
+   align-items: center;
+}
+
+@font-face {
+   font-family: 'SilkscreenGame';
+   src: url(/fonts/Silkscreen-Regular.ttf);
+   font-weight: 400;
+}
+
+body {
+   background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+   font-family: 'SilkscreenGame';
+   background-repeat: no-repeat;
+   color: white;
+}
+strong {
+   color: red;
+   text-transform: uppercase;
+}
+.pop-up {
+   position: fixed;
+   opacity: 1;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.5);
+   @include position(center);
+
+   &__text {
+      width: 40%;
+      padding: 30px 50px;
+      font-size: $fs;
+      text-align: center;
+      border: 1px solid $brc;
+      background-color: rgb(0, 0, 0);
+      border-radius: $brs;
+   }
+}
+
+.victory, .game-over {
+   display: none;
+}
+
+.game-over__active, .victory__active {
+   display: flex;
+ }
+.hello__list {
+   line-height: 35px;
+   margin: 10px 0;
+}
+.hello_close {
+   opacity: 0;
+   z-index: -1;
+   transform: translateY(-100%);
+   transition: .5s;
+}
+.header {
+   width: 100%;
+}
+.conteiner {
+   max-width: $conteiner;
+   margin: 0 auto;
+   padding: 5px;
+}
+.header-content {
+   width: 100%;
+   min-height: 80px;
+   @include position(space-between);
+   &__col {
+      flex: 1 1 33.33%;
+      @include position(center);
+   }
+}
+
+.header-content__col_spb {
+   justify-content: space-between;
+}
+.range {
+   cursor: pointer;
+}
+
+.attempt {
+   border-radius: $brs;
+   border: 1px solid $brc;
+   padding: 15px 25px;
+   font-size: 20px;
+}
+.scope {
+   border-radius: $brs;
+   border: 1px solid $brc;
+   padding: 15px 25px;
+   font-size: 20px;
+}
+.attempt-scope-text {
+   text-transform: uppercase;
+}
+.wrapper-attempt-scope {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.addBtn {
+   text-decoration: none;
+   padding: 15px 35px;
+   color: white;
+   border: 1px solid $brc;
+   text-transform: uppercase;
+   border-radius: 10px;
+   cursor: pointer;
+}
+.game {
+   width: 100%;
+   height: calc(100vh - 90px);
+}
+.melody-img {
+   cursor: pointer;
+}
+.melody-img_off {
+   opacity: .5;
+}
+
+.game-box {
+   width: 100%;
+   border: 1px solid $brc;
+   border-radius: $brs;
+   display: flex;
+   flex-wrap: wrap;
+   padding: 10px;
+   gap: 7px;
+}
+.balls {
+   @include position(center);
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+   span {
+      display: inline-block;
+      animation: ballAnim 1s ease-in;
+   }
+}
+.lop {
+   animation: lop .8s ease-in;
+}
+
+
+@keyframes ballAnim {
+   0% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      filter: blur(20px);
+      transform: translateY(-50px);
+   }
+}
+
+@keyframes lop {
+   0% {
+      opacity: 1;
+      transform: scale(1);
+   }
+   100% {
+      opacity: 0;
+      transform: scale(0.5);
+   }
+}
+
+
+@media (max-width: 992px) {
+   .header-content {
+      flex-direction: column;
+      align-items: normal;
+   }
+}
+
+@media (max-width: 500px) {
+   .header-content {
+       gap: 20px;
+   }
+ .attempt, .scope {
+   padding: 10px 12px;
+   font-size: 18px;
+ }
+ .addBtn {
+   padding: 10px 15px;
+   font-size: 18px;
+ }
+ .pop-up__text {
+   width: 50%;
+   padding: 10px;
+   font-size: 14px;
+ }
+
+}
