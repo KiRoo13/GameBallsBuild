@@ -60,7 +60,6 @@ class Game extends Interface {
         e.target.classList.add("hello_close");
     });
 
-    // this.melodyBtn.classList.add("melody-img_off");
     melody.melody.play();
 
     this.attemptNode.innerHTML = attempt;
