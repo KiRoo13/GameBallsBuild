@@ -18,7 +18,7 @@ class Muzic extends Interface {
   melody = new Howl({
     src: ["./muzic/melody.mp3"],
     html5: true,
-    volume: 0.5,
+    volume: 0.1,
   });
   lop = new Howl({
     src: ["./muzic/lop.mp3"],
@@ -144,9 +144,9 @@ class Balls extends Interface {
       let ball = e.target;
       ball.innerHTML = `<span>${ball.dataset.nominalValue}</span>`;
       ball.classList.add("lop");
-      setTimeout(() => {
+      setTimeout(()=> {
         ball.remove();
-      }, 600);
+      }, 400)
       scoupe += Number(ball.dataset.nominalValue);
       this.scoupeNode.innerHTML = scoupe;
       this.attemptNode.innerHTML = --attempt;
@@ -173,8 +173,6 @@ melody.changeVolume();
 
 const balls = new Balls();
 balls.addBalls();
-
-
 
 const game = new Game();
 game.startGame();
